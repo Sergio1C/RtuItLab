@@ -17,7 +17,7 @@ namespace Identity.FunctionalTests.Base
                 .UseContentRoot(Path.GetDirectoryName(path))
                 .ConfigureAppConfiguration(cb =>
                 {
-                    cb.AddJsonFile("appsettings.json", optional: false)
+                    cb.AddJsonFile("appsettings.Tests.json", optional: false)
                         .AddEnvironmentVariables();
                 })
                 .UseUrls("http://*:7001")

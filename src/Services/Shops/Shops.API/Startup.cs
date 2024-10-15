@@ -84,7 +84,7 @@ namespace Shops.API
                 x.AddConsumer<AddProductsByFactory>();
                 x.UsingRabbitMq((context, cfg) =>
                 {
-                    cfg.Host(new Uri("rabbitmq://host.docker.internal/"));
+                    cfg.Host(new Uri(Configuration["RabbitMq"]));
                     cfg.ReceiveEndpoint("shopsQueue", e =>
                     {
                         e.PrefetchCount = 20;

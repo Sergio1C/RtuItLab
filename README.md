@@ -282,7 +282,7 @@ docker-compose up
 Детали конфигурации docker-compose вы можете найти [здесь](https://github.com/bezlla/RtuItLab/blob/master/src/docker-compose.yml).
 ### UnitTests
 
-В проекте есть Smoke - тесты, для запуска которых необходимо запустить менеджера RabbitMQ.
+В проекте есть Smoke - тесты, для запуска которых необходимо запустить менеджера RabbitMQ и SQLServer из docker вручную. Дефолтные настройки для них прописаны в файлах ```appsettings.Tests.json```, которые подключаются во время прогона тестов. 
 
 Они покрывают доступность функционала.
 

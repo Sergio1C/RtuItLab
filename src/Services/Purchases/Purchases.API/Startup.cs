@@ -62,8 +62,7 @@ namespace Purchases.API
                             },
                             Scheme = "oauth2",
                             Name   = "Bearer",
-                            In     = ParameterLocation.Header,
-
+                            In     = ParameterLocation.Header
                         },
                         new List<string>()
                     }
@@ -83,7 +82,7 @@ namespace Purchases.API
                 x.UsingRabbitMq((context, cfg) =>
                 {
 
-                    cfg.Host(new Uri("rabbitmq://host.docker.internal/"));
+                    cfg.Host(new Uri(Configuration["RabbitMq"]));
                     cfg.ReceiveEndpoint("purchasesQueue", e =>
                     {
                         e.PrefetchCount = 20;
