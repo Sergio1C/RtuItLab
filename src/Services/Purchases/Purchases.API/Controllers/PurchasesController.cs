@@ -4,6 +4,7 @@ using RtuItLab.Infrastructure.Exceptions;
 using RtuItLab.Infrastructure.Filters;
 using RtuItLab.Infrastructure.MassTransit;
 using RtuItLab.Infrastructure.MassTransit.Purchases.Requests;
+using RtuItLab.Infrastructure.MassTransit.Purchases.Responses;
 using RtuItLab.Infrastructure.Models;
 using RtuItLab.Infrastructure.Models.Identity;
 using RtuItLab.Infrastructure.Models.Purchases;
@@ -29,8 +30,8 @@ namespace Purchases.API.Controllers
         public async Task<IActionResult> GetAllHistory()
         {
             var user = HttpContext.Items["User"] as User;
-            var response = await GetResponseRabbitTask<User, ICollection<Transaction>>(user);
-            return Ok(ApiResult<ICollection<Transaction>>.Success200(response));
+            var response = await GetResponseRabbitTask<User, GetTransactionsResponse>(user);
+            return Ok(ApiResult<GetTransactionsResponse>.Success200(response));
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetHistory(int id)
@@ -58,7 +59,7 @@ namespace Purchases.API.Controllers
             return Ok(ApiResult<int>.Success200(transaction.Id));
         }
         [HttpPut("update")]
-        public async Task<IActionResult> UpdateTransaction( [FromBody] UpdateTransaction updateTransaction)
+        public async Task<IActionResult> UpdateTransaction([FromBody] UpdateTransaction updateTransaction)
         {
             if (!ModelState.IsValid) return BadRequest("Invalid request");
             var user = HttpContext.Items["User"] as User;
