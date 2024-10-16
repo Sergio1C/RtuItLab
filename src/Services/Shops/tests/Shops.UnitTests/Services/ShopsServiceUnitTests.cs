@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RtuItLab.Infrastructure.Exceptions;
-using RtuItLab.Infrastructure.Models.Shops;
 using Shops.DAL.Data;
 using Shops.Domain.Services;
 using Xunit;
@@ -41,9 +39,8 @@ namespace Shops.UnitTests.Services
         [Fact]
         public async Task GetProductsByShopId_Expected_Throw_NotFoundException()
         {
-            var response = await _shopsService.GetProductsByShop(1251252151);
-            Assert.NotNull(response);
-            Assert.IsType<NotFoundException>(response);
+            var action = _shopsService.GetProductsByShop(1251252151);           
+            await Assert.ThrowsAsync<NotFoundException>(() => action);
         }
         [Fact]
         public async Task GetProductsByCategoryInShop_Expected_Success()
