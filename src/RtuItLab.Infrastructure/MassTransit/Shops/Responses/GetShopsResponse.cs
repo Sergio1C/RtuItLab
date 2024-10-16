@@ -3,8 +3,8 @@ using RtuItLab.Infrastructure.Models.Shops;
 
 namespace RtuItLab.Infrastructure.MassTransit.Shops.Responses
 {
-    public class GetProductsResponse
+    public class GetShopsResponse
     {
-        public ICollection<Product> Products { get; set; }
+        public ICollection<Shop> Shops { get; set; }
     }
 }

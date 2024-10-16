@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using MassTransit;
 using RtuItLab.Infrastructure.MassTransit.Purchases.Requests;
 using RtuItLab.Infrastructure.MassTransit.Shops.Requests;
+using RtuItLab.Infrastructure.MassTransit.Shops.Responses;
 using Shops.Domain.Services;
 
 namespace Shops.API.Consumers
@@ -20,11 +21,11 @@ namespace Shops.API.Consumers
 
         public async Task Consume(ConsumeContext<BuyProductsRequest> context)
         {
-            var order = await ShopsService.BuyProducts(context.Message.ShopId, context.Message.Products);
-            await context.RespondAsync(order);
+            var products = await ShopsService.BuyProducts(context.Message.ShopId, context.Message.Products);
+            await context.RespondAsync(new GetProductsResponse() { Products = products });
             
             var transaction =
-                await ShopsService.CreateTransaction(context.Message.ShopId, order);
+                await ShopsService.CreateTransaction(context.Message.ShopId, products);
             await ShopsService.AddReceipt(transaction.Receipt);
                 
             var endpoint = await _busControl.GetSendEndpoint(_rabbitMqUrl);
