@@ -1,6 +1,5 @@
 ﻿using Identity.DAL.ContextModels;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using RtuItLab.Infrastructure.Models.Identity;
@@ -11,7 +10,6 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using RtuItLab.Infrastructure.Exceptions;
-using RtuItLab.Infrastructure.MassTransit;
 
 namespace Identity.Domain.Services
 {

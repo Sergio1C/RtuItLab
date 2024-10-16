@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using RtuItLab.Infrastructure.MassTransit;
 using RtuItLab.Infrastructure.Models.Purchases;
 using RtuItLab.Infrastructure.Models.Shops;
 

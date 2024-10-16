@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RtuItLab.Infrastructure.Filters;
-using RtuItLab.Infrastructure.MassTransit;
 using RtuItLab.Infrastructure.Models;
 using RtuItLab.Infrastructure.Models.Identity;
 using System;
